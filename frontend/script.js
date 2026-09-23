@@ -1,5 +1,5 @@
 async function loadTasks() {
-    const response = await fetch("http://localhost:8000/tasks");
+    const response = await fetch("http://localhost:8082/tasks");
     const tasks = await response.json();
 
     displayTasks(tasks);
@@ -33,7 +33,7 @@ function displayTasks(tasks) {
         completeButton.onclick = async function () {
 
             await fetch(
-                `http://localhost:8000/tasks/${task.id}/complete`,
+                `http://localhost:8083/tasks/${task.id}/complete`,
                 {
                     method: "PUT"
                 }
@@ -51,7 +51,7 @@ function displayTasks(tasks) {
         deleteButton.onclick = async function () {
 
             await fetch(
-                `http://127.0.0.1:8000/tasks/${task.id}`,
+                `http://127.0.0.1:8083/tasks/${task.id}`,
                 {
                     method: "DELETE"
                 }
@@ -80,7 +80,7 @@ async function addTask() {
         return;
     }
 
-    await fetch("http://127.0.0.1:8000/tasks", {
+    await fetch("http://127.0.0.1:8083/tasks", {
 
         method: "POST",
 
